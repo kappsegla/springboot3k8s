@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.fungover</groupId>
     <artifactId>springboot3k8s</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>springboot3k8s</name>
     <description>springboot3k8s</description>
     <properties>
@@ -48,10 +48,15 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
+                        <!--                        https://dashaun.com/posts/five-months-in-the-making-multi-arch-builder/-->
+                        <!--                        <builder>dashaun/builder:tiny</builder>-->
                         <env>
-<!--                            <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>-->
-<!--                            <BP_JVM_VERSION>22</BP_JVM_VERSION>-->
-                            <BP_NATIVE_IMAGE_BUILD_ARGUMENTS>--initialize-at-build-time=org.springframework.boot.loader.nio.file.NestedFileSystemProvider</BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
+                            <BP_JVM_VERSION>22</BP_JVM_VERSION>
+                            <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
+                            <!--                            <BP_MAVEN_ACTIVE_PROFILES>native</BP_MAVEN_ACTIVE_PROFILES>-->
+                            <BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
+                                --initialize-at-build-time=org.springframework.boot.loader.nio.file.NestedFileSystemProvider
+                            </BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
                         </env>
                     </image>
                 </configuration>

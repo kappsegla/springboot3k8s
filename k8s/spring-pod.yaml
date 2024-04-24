@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spring
+  labels:
+    role: spring
+spec:
+  containers:
+    - name: spring
+      image: springboot3k8s:0.0.2
+      imagePullPolicy: IfNotPresent
+      ports:
+        - name: spring
+          containerPort: 8080
+          protocol: TCP
+      resources:
+        requests:
+          memory: "1Gi"
+          cpu: "1"
+  restartPolicy: Always

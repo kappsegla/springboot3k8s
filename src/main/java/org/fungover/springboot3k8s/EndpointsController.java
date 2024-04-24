@@ -3,11 +3,11 @@ package org.fungover.springboot3k8s;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.Locale;
 import java.util.UUID;
@@ -28,9 +28,14 @@ public class EndpointsController {
         // Get Hostname
         String hostname = InetAddress.getLocalHost().getHostName();
 
-        return new Information(ipAddress, hostname, ZonedDateTime.now(), Locale.getDefault(), uuid);
+        return new Information("Version 1",ipAddress, hostname, ZonedDateTime.now(), Locale.getDefault(), uuid);
     }
 
-    record Information(String ipAddress, String hostname, ZonedDateTime dateTime, Locale locale, UUID uuid) {
+    @PostMapping("/die")
+    public void die(){
+        System.exit(-1);
+    }
+
+    record Information(String address, String ipAddress, String hostname, ZonedDateTime dateTime, Locale locale, UUID uuid) {
     }
 }
