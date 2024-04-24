@@ -28,7 +28,7 @@ public class EndpointsController {
         // Get Hostname
         String hostname = InetAddress.getLocalHost().getHostName();
 
-        return new Information("Version 1",ipAddress, hostname, ZonedDateTime.now(), Locale.getDefault(), uuid);
+        return new Information("Version 2",ipAddress, hostname, ZonedDateTime.now(), Locale.getDefault(), uuid);
     }
 
     @PostMapping("/die")
