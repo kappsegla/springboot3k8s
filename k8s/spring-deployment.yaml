@@ -17,9 +17,25 @@ spec:
     spec:
       containers:
         - name: spring
-          image: springboot3k8s:0.0.1-SNAPSHOT
+          image: springboot3k8s:0.0.2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
               protocol: TCP
+          resources:
+            requests:
+              cpu: "100m"
+            limits:
+              cpu: "1"
+#          env:
+#            - name: GREETING_PREFIX
+#              valueFrom:
+#                secretKeyRef:
+#                  name: spring-boot
+#                  key: greeting
+#              value: Hello
+#              valueFrom:
+#                configMapKeyRef:
+#                  name: spring-boot-configmap
+#                  key: greeter.prefix
       restartPolicy: Always

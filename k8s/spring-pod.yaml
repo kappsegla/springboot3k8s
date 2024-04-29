@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
     - name: spring
-      image: springboot3k8s:0.0.2
+      image: springboot3k8s:0.0.1
       imagePullPolicy: IfNotPresent
       ports:
         - name: spring

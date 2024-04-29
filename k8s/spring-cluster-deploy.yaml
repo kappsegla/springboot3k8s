@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-test-deployment
+  labels:
+    app: spring-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-test
+  template:
+    metadata:
+      name: spring-test
+      labels:
+        app: spring-test
+    spec:
+      containers:
+        - name: spring-test
+          image: kappsegla/kube:1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-service
+spec:
+  type: ClusterIP
+  selector:
+    app: spring-test
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: http-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: spring-service
+                port:
+                  number: 8080

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: springboot3k8s
+  labels:
+    spring.cloud.kubernetes.config: "true"
+data:
+  application.properties: |-
+    greeting.message=Hello!
