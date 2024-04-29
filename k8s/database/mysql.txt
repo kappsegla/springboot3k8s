@@ -1,0 +1,20 @@
+Single-Instance Stateful Application
+https://kubernetes.io/docs/tasks/run-application/run-single-instance-stateful-application/
+
+https://dev.mysql.com/doc/mysql-operator/en/
+
+
+hostPath storage
+https://kubernetes.io/docs/concepts/storage/volumes/#hostpath
+
+On windows?
+https://medium.com/@purplelorish/persistent-volumes-hostpath-in-docker-desktop-windows-1eef42ce837b
+hostPath:
+    path: /run/desktop/mnt/host/c/mnt/
+
+
+https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
+Stable, unique network identifiers.
+Stable, persistent storage.
+Ordered, graceful deployment and scaling.
+Ordered, automated rolling updates.

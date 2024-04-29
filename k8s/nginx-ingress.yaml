@@ -13,7 +13,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: spring-service
+                name: springboot3k8s
                 port:
                   number: 8080
           - path: /kubeview

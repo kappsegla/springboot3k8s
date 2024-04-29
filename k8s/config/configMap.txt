@@ -1,0 +1,23 @@
+https://github.com/energy2522/spring-cloud-k8s-watcher-test
+What was wrong? No roles for accessing configMap...
+When using configwatcher servicename must be same as spring app name.
+
+
+kubectl apply -f role.yaml
+kubectl apply -f dynamicConfig.yaml
+kubectl apply -f spring-deployment.yaml
+
+Connect to https://localhost/greet/name
+Update dynamicConfig.yaml
+kubectl apply -f dynamicConfig.yaml
+Connect to https://localhost/greet/name     //Should change
+
+Start configwatcher
+kubectl apply -f configwatcher.yaml
+Update dynamicConfig.yaml
+kubectl apply -f dynamicConfig.yaml
+Connect to https://localhost/greet/name     //Should be refreshed automatically after 2 min. Might restart pod?
+
+
+//Rolling updates?
+https://nilesh93.medium.com/enable-rolling-updates-in-kubernetes-with-zero-downtime-31d7ec388c81
